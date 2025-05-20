@@ -1,0 +1,21 @@
+.product_container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.card {
+    margin: 5px;
+}
+
+.card-img-top {
+    width: 150px;
+    height: 134px;
+    align-self: center;
+}
+
+#price-buy {
+    display: flex;
+    justify-content: space-between;
+}
