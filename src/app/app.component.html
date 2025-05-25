@@ -3,16 +3,19 @@
   <h1 class="home-title">TIENDA GAMER</h1>
   <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Products</a>
+    <a class="nav-link" [routerLink]="['/home']">Products</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" [routerLink]="['/about']">About</a>
   </li>
 </ul>
 </header>
-<div>
-  <app-product></app-product>
-</div> 
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<footer class="text-center bg-dark">
+  <span class="text-light">{{title}} 2020</span>
+</footer> 
