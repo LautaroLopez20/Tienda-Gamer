@@ -1,5 +1,5 @@
 <div class="cart_container">
-    @for (product of cartList$ | async; track product.name) {
+    @for (product of (cartList$ | async); track product.name) {
         <div>
             <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
