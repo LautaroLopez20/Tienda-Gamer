@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ProductCartService } from '../product-cart.service';
+import { Product } from '../product/Product';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -8,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class CartComponent {
 
+  cartList$: Observable<Product[]>;
+
+  constructor(private cart: ProductCartService) {
+    this.cartList$ = cart.cartList.asObservable();
+  }
 }
