@@ -1,5 +1,5 @@
 <div class="product_container">
-    @for (product of products; track product.name) {
+    @for (product of (products$ | async); track product.name) {
         <div class="card">
             <img class="img-thumbnail" [src]="product.image" class="card-img-top" alt="...">
             <div class="card-body">
