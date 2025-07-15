@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductCartService } from '../product-cart.service';
 import { Observable} from 'rxjs';
+import { Product } from '../product/Product';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,9 +11,9 @@ import { Observable} from 'rxjs';
 })
 export class NavBarComponent {
   
-  emptyCart$: Observable<Boolean>;
-
-  constructor(private cart: ProductCartService,) {
-    this.emptyCart$ = cart.cartEmpty.asObservable();
+  cartLength$: Observable<number>;
+  
+  constructor(private cart: ProductCartService) {
+    this.cartLength$ = cart.cartLength.asObservable();
   }
 }

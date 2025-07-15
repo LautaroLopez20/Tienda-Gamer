@@ -4,5 +4,7 @@ export interface Product {
     price: number,
     stock: number,
     quantity: number,
+    offer: Boolean,
+    discount: number,
 }
 

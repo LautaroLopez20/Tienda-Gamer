@@ -8,10 +8,10 @@ import { BehaviorSubject} from 'rxjs';
 export class ProductCartService {
 
   private _cartList: Product[] = [];
-  private _empty: Boolean = true;
+  private _cartLength: number = 0;
 
   cartList: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
-  cartEmpty: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(true);
+  cartLength: BehaviorSubject<number> = new BehaviorSubject<number>(0); //Se encarga de mantener actualizado, icono del carrito, en la nav-bar
  
   constructor() { }
 
@@ -20,14 +20,23 @@ export class ProductCartService {
 
     if((!productInCart)) {
       this._cartList.push({ ... product})
-      if(this._empty) this._empty = false;
+      this._cartLength = this.GetCartLength(this._cartLength, this._cartList); 
     } else if((productInCart.quantity + product.quantity) <= product.stock) {//El stock del producto limita las unidades que se pueden agregar al carro de compras
-      productInCart.quantity += product.quantity;                            
+      productInCart.quantity += product.quantity;
+      this._cartLength = this.GetCartLength(this._cartLength, this._cartList);                         
     } else {
       alert('Stock superado');
     }
 
-    this.cartEmpty.next(this._empty);
+    this.cartLength.next(this._cartLength);
     this.cartList.next(this._cartList);
+  }
+
+  GetCartLength(cartLength: number, cartList: Product[]): number {
+    cartLength = 0;
+    cartList.forEach(element => {
+      cartLength += element.quantity;
+    });
+    return cartLength;
   }
 }

@@ -14,7 +14,7 @@ export class ProductComponent {
   products$: Observable<Product[]>;
 
   constructor(private cart: ProductCartService, private productDataService: ProductDataService) {
-    this.products$ = this.productDataService.GetAll();
+    this.products$ = this.productDataService.getAll();
   }
 
   AddToCart(product: Product): void  {

@@ -1,22 +1,45 @@
 .product_container { 
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 0.2fr);
 }
 
 .card {
-    margin: 5px;
-    height: 300px;
-    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    margin: 10px;
+    height: 160px;
+    width: 365px;
     border-radius: 10px;
     border: solid 1px grey;
-    align-items: center;
+}
+.card:hover {
+    cursor: pointer;
 }
 
 .card-header {
     border: 0px;
     padding: 0px;
-    height: 180px;
+    height: 150px;
+    width: 150px;
+    background-color: #ffffff;
+}
+.card-img-left {
+    margin-left: 15px;
+    width: 106px;
+    height: 95px;
+}
+
+.card-body {
+    margin: auto;
+    padding: 0px;
+    height: 150px;
     width: 200px;
+    align-content: center;
+}
+
+.card-title {
+    width: 200px;
+    margin-bottom: 20px;
 }
 
 .discount{
@@ -47,51 +70,17 @@
     font-size: 18px;
 }
 
-.offer-image {
-    margin-left: 20px;
-    width: 160px;
-    height: 140px;
-}
-
-.image {
-    width: 160px;
-    height: 140px;
-    margin: 20px
-}
-
-.card-body {
-    height: 126px;
-    width: 180px;
-    padding: 0px;
-    margin: auto;
-    align-content: center;
-    justify-content: center;
-}
-
-.card-title {
-    width: 180px;
-}
-
-#price-buy {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    width: 180px;
-}
-
-p {
-    margin: 0px 
-}
 
 #title {
     text-align: center;
 }
 
-#offer-price {
+#price-buy {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    width: 180px;
 }
+
 #new-price {
     font-weight: bold;
     font-size: 22px;

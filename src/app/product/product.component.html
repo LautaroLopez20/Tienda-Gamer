@@ -1,14 +1,44 @@
+<h1 id="title">PRODUCTOS</h1>
 <div class="product_container">
     @for (product of (products$ | async); track product.name) {
-        <div class="card">
-            <img class="img-thumbnail" [src]="product.image" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <div id="price-buy">
-                <p class="card-text">{{product.price | currency}}</p>
-                <a class="btn btn-primary" (click)="AddToCart(product)">Buy</a>
+        @if(product.offer) {
+            <div class="card">
+                <div class="card-header">
+                    <div class="discount">
+                        <div id="discount-icon">
+                            <p><i class="fa-solid fa-tag"></i></p>
+                        </div>
+                        <div class="discount-text">
+                            <p>DESCUENTO</p>
+                            <p>{{product.discount + '% OFF'}}</p>
+                        </div>
+                    </div>
+                    <img [src]="product.image" class="offer-image" alt="...">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <div id="price-buy">
+                    <div id="offer-price">
+                        <p id="old-price" class="card-text">{{product.price | currency}}</p>
+                        <p id="new-price" class="card-text">{{((product.price * product.discount)/100) | currency}}</p>
+                    </div>
+                    <a class="btn btn-primary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
+        } @else {
+            <div class="card">
+                <div class="card-header">
+                    <img [src]="product.image" class="image" alt="...">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <div id="price-buy">
+                    <p class="card-text">{{product.price | currency}}</p>
+                    <a class="btn btn-primary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                </div>
+                </div> 
+            </div> 
+        }
     }
 </div>

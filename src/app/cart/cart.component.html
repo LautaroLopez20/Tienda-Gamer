@@ -2,10 +2,14 @@
     @for (product of (cartList$ | async); track product.name) {
         <div>
             <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <div id="price-buy">
-                <p class="card-text">{{product.price | currency}} | cantidad: {{product.quantity}}</p>
-            </div>
+                <h5 class="card-title">{{product.name}}</h5>
+                <div id="price-buy">
+                @if(product.offer){
+                    <p class="card-text">{{((product.price * product.discount)/100) | currency}} | cantidad: {{product.quantity}} OFERTA</p>
+                } @else {
+                    <p class="card-text">{{product.price | currency}} | cantidad: {{product.quantity}}</p>
+                }
+                </div>
             </div>
         </div>
     }

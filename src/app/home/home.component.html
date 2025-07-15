@@ -1,0 +1,28 @@
+<h1 id="title">PRODUCTOS DESTACADOS</h1>
+<div class="product_container">
+    @for(product of (products$ | async); track product.name) {
+        @if(product.offer) {
+            <div class="btn btn-primary" (click)="AddToCart(product)" class="card">
+                <div class="card-header">
+                    <div class="discount">
+                        <div id="discount-icon">
+                            <p><i class="fa-solid fa-tag"></i></p>
+                        </div>
+                        <div class="discount-text">
+                            <p>DESCUENTO</p>
+                            <p>{{product.discount + '% OFF'}}</p>
+                        </div>
+                    </div>
+                    <img class="img-thumbnail" [src]="product.image" class="card-img-left" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <div id="price-buy">
+                        <p id="old-price" class="card-text">{{product.price | currency}}</p>
+                        <p id="new-price" class="card-text">{{((product.price * product.discount)/100) | currency}}</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
