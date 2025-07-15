@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Product } from './product/Product';
+import { Product } from '../product/Product';
 
 const URL = 'https://667477c175872d0e0a968df8.mockapi.io/api/Tienda-Gamer-Stock';
 const OFFER = '?offer=true';

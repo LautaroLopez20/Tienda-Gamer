@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from './Product';
-import { ProductCartService } from '../product-cart.service';
-import { ProductDataService } from '../product-data.service';
+import { ProductCartService } from '../services/product-cart.service';
+import { ProductDataService } from '../services/product-data.service';
 import { Observable } from 'rxjs';
 
 @Component({
