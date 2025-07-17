@@ -20,23 +20,27 @@ export class ProductCartService {
 
     if((!productInCart)) {
       this._cartList.push({ ... product})
-      this._cartLength = this.GetCartLength(this._cartLength, this._cartList); 
     } else if((productInCart.quantity + product.quantity) <= product.stock) {//El stock del producto limita las unidades que se pueden agregar al carro de compras
-      productInCart.quantity += product.quantity;
-      this._cartLength = this.GetCartLength(this._cartLength, this._cartList);                         
+      productInCart.quantity += product.quantity;        
     } else {
       alert('Stock superado');
     }
 
-    this.cartLength.next(this._cartLength);
+    this.GetCartLength()
     this.cartList.next(this._cartList);
   }
 
-  GetCartLength(cartLength: number, cartList: Product[]): number {
-    cartLength = 0;
-    cartList.forEach(element => {
-      cartLength += element.quantity;
+  GetCartLength() {
+    this._cartLength = 0;
+    this._cartList.forEach(element => {
+      this._cartLength += element.quantity;
     });
-    return cartLength;
+    this.cartLength.next(this._cartLength);
+  }
+
+  DeleteProduct(name: String) {
+    let product = this._cartList.filter(p => p.name == name)[0];
+    this._cartList.splice(this._cartList.indexOf(product),1);
+    this.GetCartLength()
   }
 }

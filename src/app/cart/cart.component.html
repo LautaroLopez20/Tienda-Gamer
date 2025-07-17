@@ -1,16 +1,27 @@
-<div class="cart_container">
-    @for (product of (cartList$ | async); track product.name) {
-        <div>
-            <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <div id="price-buy">
-                @if(product.offer){
-                    <p class="card-text">{{((product.price * product.discount)/100) | currency}} | cantidad: {{product.quantity}} OFERTA</p>
-                } @else {
-                    <p class="card-text">{{product.price | currency}} | cantidad: {{product.quantity}}</p>
-                }
-                </div>
+@for (product of (cartList$ | async); track product.name) {
+    <div class="cart-product"> 
+        <div class="cart-left">
+            <img [src]="product.image" class="image" alt="...">
+        </div>
+        <div class="cart-mid">
+            @if(product.offer) {
+                
+            }
+            <h5 id="cart-title">{{product.name}}</h5>
+            <div class="cart-buttons">
+                <app-input-number [(quantity)]="product.quantity" [max]="product.stock" [name]="product.name"></app-input-number>
+                <button id="delete-btn" type="button" class="btn btn-outline-secondary btn-sm" (click)="deleteProduct(product.name)"><i class="fa-solid fa-trash-can"></i></button>
             </div>
         </div>
-    }
-</div>
+        <div class="cart-right">
+        @if(product.offer) {
+            <div id="offer-price">
+                <p id="old-price" >{{product.price | currency}}</p>
+                <p id="new-price" >{{((product.price * product.discount)/100) | currency}}</p>
+            </div>
+        } @else {
+            <p id="normal-price">{{product.price | currency}}</p>
+        }
+        </div>
+    </div>
+}    

@@ -16,4 +16,8 @@ export class CartComponent {
   constructor(private cart: ProductCartService) {
     this.cartList$ = cart.cartList.asObservable();
   }
+
+  deleteProduct(name: String) {
+    this.cart.DeleteProduct(name);
+  }
 }

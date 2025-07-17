@@ -22,7 +22,7 @@
                         <p id="old-price" class="card-text">{{product.price | currency}}</p>
                         <p id="new-price" class="card-text">{{((product.price * product.discount)/100) | currency}}</p>
                     </div>
-                    <a class="btn btn-primary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-outline-secondary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" ></i></a>
                 </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <h5 class="card-title">{{product.name}}</h5>
                 <div id="price-buy">
                     <p class="card-text">{{product.price | currency}}</p>
-                    <a class="btn btn-primary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    <a class="btn btn-outline-secondary" (click)="AddToCart(product)"><i class="fa-solid fa-cart-shopping" ></i></a>
                 </div>
                 </div> 
             </div> 
