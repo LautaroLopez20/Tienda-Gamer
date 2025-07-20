@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductCartService } from '../services/product-cart.service';
 import { Observable} from 'rxjs';
-import { Product } from '../product/Product';
 
 @Component({
   selector: 'app-nav-bar',
